@@ -17,6 +17,8 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { MedicoComponent } from './mantenimientos/medicos/medico/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 const routes: Routes = [
     {
@@ -26,6 +28,7 @@ const routes: Routes = [
         children: [
             {path: '', component: DashboardComponent, data: {titulo: "Dashboard"}},
             {path: 'account-settings', component: AccountSettingsComponent, data: {titulo: "Ajustes de cuenta"}},
+            {path: 'buscar/:termino', component: BusquedaComponent, data: {titulo: "Busquedas"}},
             {path: 'grafica1', component: Grafica1Component, data: {titulo: "Gráfica #1"}},
             {path: 'perfil', component: PerfilComponent, data: {titulo: "Perfil"}},
             {path: 'progress', component: ProgressComponent, data: {titulo: "ProgressBar"}},
@@ -33,10 +36,10 @@ const routes: Routes = [
             {path: 'rxjs', component: RxjsComponent, data: {titulo: "Rxjs"}},
 
             //Mantenimientos
-            {path: 'usuarios', component: UsuariosComponent, data: {titulo: "Usuarios"}},
             {path: 'hospitales', component: HospitalesComponent, data: {titulo: "Hospitales"}},
             {path: 'medicos', component: MedicosComponent, data: {titulo: "Medicos"}},
-            {path: 'medicos/:id', component: MedicoComponent, data: {titulo: "Medico"}}
+            {path: 'medicos/:id', component: MedicoComponent, data: {titulo: "Medico"}},
+            {path: 'usuarios', canActivate: [AdminGuard], component: UsuariosComponent, data: {titulo: "Usuarios"}},
 
         ]
     }
