@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { tap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
@@ -140,7 +139,7 @@ export class UsuarioService {
                   usuarios
                 };
               })
-            )
+            );
   }
 
   eliminarUsuario(usuario: Usuario){
